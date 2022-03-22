@@ -28,16 +28,12 @@ class LocalTransfer extends Transfer
      */
     protected function copy()
     {
-        // files
-    //    dd($this->clipboard['files']);
-        // foreach ($this->clipboard['files'] as $file) {
-        //     // dump($file);
-        //     Storage::disk($this->disk)->copy(
-        //         $file,
-        //         $this->path,
-        //         // $this->renamePath($file, $this->path)
-        //     );
-        // }
+        foreach ($this->clipboard['files'] as $file) {
+            Storage::disk($this->disk)->copy(
+                $file,
+                $this->path,
+            );
+        }
         if($this->clipboard['directories'] == null)
         {
             $this->clipboard['directories'] = [];
@@ -73,9 +69,7 @@ class LocalTransfer extends Transfer
                 $this->path,//seaweedfs
             );
         }
-        // foreach ($this->clipboard['directories'] as $directory) {
-        //     $this->copyDirectory($directory);
-        // }
+      
     }
 
     /**
